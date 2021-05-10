@@ -30,7 +30,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'viveks-app'
         DOCKER_REG = "350473869200.dkr.ecr.us-east-1.amazonaws.com"
-        PATH = "Python/3.8/bin:$PATH"
+        PATH = "/root/.local/bin:$PATH"
     }    
     parameters {
         string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch to build')
