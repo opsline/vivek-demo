@@ -35,8 +35,8 @@ pipeline {
     parameters {
         string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch to build')
     }
-    //all is built and run from the main
-    agent { node { label 'main' } }
+    //all is built and run from the master
+    agent { node { label 'master' } }
     // Pipeline stages
     stages {
         stage('Git clone and setup') {
