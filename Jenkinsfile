@@ -33,7 +33,7 @@ pipeline {
         PATH = "Python/3.8/bin:$PATH"
     }    
     parameters {
-        string(name: 'GIT_BRANCH', defaultValue: 'main', description: 'Git branch to build')
+        string(name: 'GIT_BRANCH', defaultValue: 'master', description: 'Git branch to build')
     }
     //all is built and run from the master
     agent { node { label 'master' } }
@@ -42,7 +42,7 @@ pipeline {
         stage('Git clone and setup') {
             when {
                 anyOf {
-                    environment name: 'GIT_BRANCH', value: 'main'
+                    environment name: 'GIT_BRANCH', value: 'master'
                 }
             }
             steps {
@@ -67,7 +67,7 @@ pipeline {
         stage('Build Docker Images') {
             when {
                 anyOf {
-                    environment name: 'GIT_BRANCH', value: 'main'
+                    environment name: 'GIT_BRANCH', value: 'master'
                 }
             }
             parallel {
@@ -81,7 +81,7 @@ pipeline {
         stage('Publish Docker Images') {
             when {
                 anyOf {
-                    environment name: 'GIT_BRANCH', value: 'main'
+                    environment name: 'GIT_BRANCH', value: 'master'
                 }
             }
             parallel {
